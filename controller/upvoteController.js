@@ -46,7 +46,7 @@ exports.downVoteJoke = async (req, res) => {
     try {
         const { joke, user } = req.body; 
         if (!joke || !user) {
-            return res.status(400).json({ message: "All fields are required" }); // Changed to 400
+            return res.status(400).json({ message: "All fields are required" }); 
         }
         const existingUpvote = await Upvotes.findOne({ joke, user });
         
