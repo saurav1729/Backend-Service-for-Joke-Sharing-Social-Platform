@@ -9,12 +9,12 @@ const JokesSchema = mongoose.Schema({
     content: {
         type: String,
         required: true,
-        maxlength: 200 // Changed to maxlength
+        maxlength: 200
     },
     author: {
         type: String,
         required: true,
-        maxlength: 50, // Changed to maxlength
+        maxlength: 50, 
     },
     upvotes: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -24,17 +24,17 @@ const JokesSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Downvote",
     }],
-    comments: [{ // Changed from Comment to comments
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comments",
     }],
     createdAt: {
         type: Date,
-        default: Date.now, // Changed to Date.now for the default value
+        default: Date.now, 
     },
     updatedAt: {
         type: Date,
-        default: Date.now, // Changed to Date.now for the default value
+        default: Date.now,
     }
 });
 

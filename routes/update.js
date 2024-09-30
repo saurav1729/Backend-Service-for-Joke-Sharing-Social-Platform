@@ -5,7 +5,7 @@ const router  = express.Router();
 
 //controller 
 
-const {upvoteJoke, downVoteJoke}=require('../controller/upvoteController');
+const {upvoteJoke, downVoteJoke}=require('../controller/voteController');
 const { createComment, deleteComment } = require('../controller/commentController');
 
 

@@ -11,6 +11,13 @@ exports.upvoteJoke = async(req,res)=>{
         if(!joke || !user){
             return res.status(401).json("All fileds are  required");
         }
+
+        const existingDownVote = await Downvote.findOne({ joke, user });
+        
+        if (existingDownVote) {
+            await Downvote.findByIdAndDelete(existingDownVote._id);
+            await Jokes.findByIdAndUpdate(joke, { $pull: { downvotes: existingDownVote._id } });
+        }
         const upvote = new Upvotes({
             joke,user
         }) ; 
@@ -46,7 +53,7 @@ exports.downVoteJoke = async (req, res) => {
     try {
         const { joke, user } = req.body; 
         if (!joke || !user) {
-            return res.status(400).json({ message: "All fields are required" }); 
+            return res.status(400).json({ message: "All fields are required" }); // Changed to 400
         }
         const existingUpvote = await Upvotes.findOne({ joke, user });
         

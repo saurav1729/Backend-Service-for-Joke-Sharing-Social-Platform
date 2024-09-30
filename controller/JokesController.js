@@ -15,7 +15,7 @@ exports.addJoke = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ // Changed to 500 for Internal Server Error
+        res.status(500).json({ 
             success: false, 
             data: "Internal Server Error",
             message: err.message
@@ -26,8 +26,8 @@ exports.addJoke = async (req, res) => {
 exports.getAllJokes = async (req, res) => {
     try {
         const AllJokes = await Jokes.find()
-            .populate("upvotes") // Changed to lowercase
-            .populate("comments") // Changed to lowercase
+            .populate("upvotes") 
+            .populate("comments")
             .exec();
 
         res.status(200).json({
